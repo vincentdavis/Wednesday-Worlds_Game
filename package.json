@@ -1,0 +1,23 @@
+{
+  "name": "wednesday-worlds_game",
+  "version": "1.0.0",
+  "description": "wednesday-worlds_game",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincentdavis/Wednesday-Worlds_Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vincentdavis/Wednesday-Worlds_Game/issues"
+  },
+  "homepage": "https://github.com/vincentdavis/Wednesday-Worlds_Game#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  }
+}

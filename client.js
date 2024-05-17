@@ -1,4 +1,4 @@
-const serverUrl = 'ws://localhost:3000';
+const serverUrl = 'ws://165.232.188.93:3000';
 const localConnection = new RTCPeerConnection();
 const ws = new WebSocket(serverUrl);
 const canvas = document.getElementById('gameCanvas');
