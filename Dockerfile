@@ -18,8 +18,8 @@ EXPOSE 3000
 
 # Create a shell script to run multiple commands
 RUN echo "#!/bin/sh\n\
-npx http-server -p 3001 &\n\
-node signaling-server.js" > run.sh
+npx http-server -p 3001 -a 0.0.0.0 -c-1 ./wednesday-worlds-game/dist/index.html &\n\
+node server.js" > run.sh
 
 # Make the shell script executable
 RUN chmod +x run.sh

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/vincentdavis/Wednesday-Worlds_Game#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
+    "socket.io": "^4.7.5",
     "ws": "^8.17.0"
   }
 }
