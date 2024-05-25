@@ -13,9 +13,29 @@
     <section>
         <canvas id="gameCanvas" width="900" height="600"></canvas>
     </section>
+    <section id="controls">
+        <button id="left" onTouchStart="move('left')">Left</button>
+        <button id="up" onTouchStart="move('up')">Up</button>
+        <button id="right" onTouchStart="move('right')">Right</button>
+        <button id="down" onTouchStart="move('down')">Down</button>
+      </section>
+      <canvas id="speedometer" width="200" height="100"></canvas>
+
     <section>
         <ul id="playersList"></ul>
     </section>
     <script src="client.js"></script>
 </body>
+<style>
+    #gameCanvas, #speedometer {
+  max-width: 100%;
+  height: auto;
+}
+
+#controls button {
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+}
+</style>
 </html>

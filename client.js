@@ -24,6 +24,10 @@ document.addEventListener('keydown', (e) => {
     sendPlayerState();  // Send updated state to peers
 });
 
+document.getElementById('controls').addEventListener('touchstart', function(event) {
+    event.preventDefault();
+  });
+  
 // Function to generate a color from a player's ID
 function generateColor(id) {
     // Create a hash from the ID
@@ -64,6 +68,47 @@ function updatePlayerState(id, state) {
     players[id] = state;
     draw();
 }
+let offset = 0;
+function drawBackground() {
+    offset += 1;
+    if (offset > canvas.width) offset = 0;
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.fillRect(-offset, 0, canvas.width, canvas.height);
+    ctx.fillRect(canvas.width - offset, 0, canvas.width, canvas.height);
+}
+
+
+function move(direction) {
+    switch(direction) {
+      case 'up': player.y -= player.speed; break;
+      case 'down': player.y += player.speed; break;
+      case 'left': player.x -= player.speed; break;
+      case 'right': player.x += player.speed; break;
+    }
+    sendPlayerState();
+  }
+
+function drawSpeedometer() {
+const speedCanvas = document.getElementById('speedometer');
+const speedCtx = speedCanvas.getContext('2d');
+speedCtx.clearRect(0, 0, speedCanvas.width, speedCanvas.height);
+speedCtx.beginPath();
+speedCtx.arc(100, 50, 40, Math.PI, 2 * Math.PI, false);
+speedCtx.strokeStyle = '#333';
+speedCtx.lineWidth = 10;
+speedCtx.stroke();
+    
+// Needle to denote speed
+const angle = (player.speed / 10) * Math.PI; // Assuming max speed is 10
+speedCtx.beginPath();
+speedCtx.moveTo(100, 50);
+speedCtx.lineTo(100 + 40 * Math.cos(Math.PI + angle), 50 - 40 * Math.sin(Math.PI + angle));
+speedCtx.strokeStyle = 'red';
+speedCtx.stroke();
+}
+
+// Call this in your main update/render function
+drawSpeedometer();
 
 draw();
 
@@ -84,17 +129,9 @@ ws.onmessage = async (message) => {
     }
 };
 
-document.getElementById('connect').addEventListener('click', () => {
-    localConnection.createOffer().then(offer => {
-        localConnection.setLocalDescription(offer);
-        sendSignalingMessage({ 'offer': offer });
-    });
-});
 
-document.getElementById('disconnect').addEventListener('click', () => {
-    localConnection.close();
-    ws.close();
-});
+
+
 
 localConnection.onicecandidate = (event) => {
     if (event.candidate) {
