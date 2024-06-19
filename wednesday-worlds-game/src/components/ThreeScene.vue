@@ -6,7 +6,7 @@
   import { ref, onMounted } from 'vue';
   import * as THREE from 'three';
   import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-  import Box from './Box.vue';
+  // import Box from './Box.vue';
   import Ground from './Ground.vue';
   import Lights from './Lights.vue';
   

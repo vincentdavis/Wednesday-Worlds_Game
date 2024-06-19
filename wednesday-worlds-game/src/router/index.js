@@ -26,8 +26,8 @@ const routes = [
     component: LoginComponent,
   },
   {
-    path: '/game',
-    name: 'Game',
+    path: '/gameRoom',
+    name: 'GameRoom',
     component: GameComponent,
     props: (route) => ({ username: route.params.username }),
   },
