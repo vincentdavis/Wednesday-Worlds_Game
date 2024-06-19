@@ -1,6 +1,6 @@
 <template>
     <div>
-      <BoxComponent v-if="username" :username="username" />
+      <GameWorld v-if="username" :username="username" />
       <div v-else>
         {{ $router.push({ name: 'Login' })}}
       </div>
@@ -8,12 +8,12 @@
   </template>
   
   <script>
-  import BoxComponent from '@/components/BoxComponent.vue';
+  import GameWorld from '@/components/GameWorld.vue';
   
   export default {
     name: 'GameComponent',
     components: {
-      BoxComponent,
+      GameWorld,
     },
     props: ['username'],
   };
